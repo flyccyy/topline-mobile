@@ -28,7 +28,6 @@
 
 <script>
 import { userLogin } from "@/api/user";
-import {setAuthor} from '@/utils/author'
 export default {
   data() {
     return {
@@ -61,10 +60,9 @@ export default {
               mobile: this.mobile,
               code: this.code
             });
-            this.$store.commit('setUser',res)
+            window.localStorage.setItem("user", JSON.stringify(res));
             console.log(res);
           } catch (err) {
-            //发送请求失败
             console.log("出错");
           }
         }

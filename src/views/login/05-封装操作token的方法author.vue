@@ -61,10 +61,9 @@ export default {
               mobile: this.mobile,
               code: this.code
             });
-            this.$store.commit('setUser',res)
+            setAuthor(res)
             console.log(res);
           } catch (err) {
-            //发送请求失败
             console.log("出错");
           }
         }

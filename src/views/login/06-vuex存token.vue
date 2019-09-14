@@ -64,7 +64,6 @@ export default {
             this.$store.commit('setUser',res)
             console.log(res);
           } catch (err) {
-            //发送请求失败
             console.log("出错");
           }
         }
