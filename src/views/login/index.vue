@@ -21,19 +21,21 @@
       />
     </van-cell-group>
     <div class="login-btn">
-      <van-button type="info" size="large" @click="login">登录</van-button>
+      <van-button type="info" size="large" @click="login" :loading="isLoading" loading-text="...登录中">登录</van-button>
+
     </div>
   </div>
 </template>
 
 <script>
 import { userLogin } from "@/api/user";
-import {setAuthor} from '@/utils/author'
+import { setAuthor } from "@/utils/author";
 export default {
   data() {
     return {
       mobile: "18888888888",
-      code: "246810"
+      code: "246810",
+      isLoading:false,
     };
   },
   methods: {
@@ -56,15 +58,20 @@ export default {
         if (!valid) {
           console.log("验证失败");
         } else {
+          this.isLoading=true;
           try {
             let res = await userLogin({
               mobile: this.mobile,
               code: this.code
             });
-            this.$store.commit('setUser',res)
+            this.$store.commit("setUser", res);
+            this.isLoading = false;
+            this.$router.push("/home");
             console.log(res);
           } catch (err) {
-            //发送请求失败
+            //发送请求失败，即登录失败时提示
+            this.$toast.fail('登录失败');
+            this.isLoading = false;
             console.log("出错");
           }
         }
@@ -78,11 +85,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.van-nav-bar {
-  background-color: #3396fc;
-  .van-nav-bar__title {
-    color: #fff;
-  }
+//把样式写在了app.vue
+.login-wrap{
+  padding-top: 46px;
 }
 .login-btn {
   margin: 10px;
