@@ -49,5 +49,16 @@ function report({art_id,type}){
     }
   })
 }
+
+//联想
+function thinkSuggest(key){
+  return request({
+    url:'v1_0/suggestion',
+    method:'GET',
+    params:{
+      q:key
+    }
+  })
+}
 // 暴露给外界
-export { getArticle,dislikeArticle,blacklistAuthor,report };
+export { getArticle,dislikeArticle,blacklistAuthor,report,thinkSuggest };
