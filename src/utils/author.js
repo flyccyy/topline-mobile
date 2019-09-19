@@ -10,7 +10,7 @@ function setAuthor(val){
 
 //获取
 function getAuthor(){
-    window.localStorage.getItem(Author_Key)
+    return JSON.parse(window.localStorage.getItem(Author_Key))
 }
 
 //清除

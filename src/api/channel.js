@@ -6,6 +6,25 @@ function getChannel(){
         method:'GET'
     })
 }
+function getAllChannel(){
+    return request({
+        url:'v1_0/channels',
+        method:'GET'
+    })
+}
+//channels是数组，这里传参写{channels}?
+function loginChannel({channels}){
+    return request({
+        url:'v1_0/user/channels',
+        method:'PUT',
+        data:{
+            channels:channels
+        }
+
+    })
+}
 export {
-    getChannel
+    getChannel,
+    getAllChannel,
+    loginChannel
 }
