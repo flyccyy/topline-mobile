@@ -66,7 +66,7 @@ export default {
             });
             this.$store.commit("setUser", res);
             this.isLoading = false;
-            this.$router.push("/home");
+            this.$router.back("/home");
             console.log(res);
           } catch (err) {
             //发送请求失败，即登录失败时提示

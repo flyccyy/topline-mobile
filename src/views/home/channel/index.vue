@@ -2,7 +2,7 @@
   <div>
     <!-- 点遮罩弹框消失? -->
     <!-- 这里本来是v-model，所以可以绑定value -->
-    <!-- 这个弹框只要点击遮罩层show就会变为false，然后传给父，注册的要是Input事件 ，$event不能改为value，因为这里:value而不是v-model?-->
+    <!-- 这个弹框只要点击遮罩层show就会变为false，然后传给父，注册的要是Input事件 ，$event不能改为value，因为这里:value而不是v-model?，因为传给父的属性是要在data里面定义的？这里不是v-model,所以value的值变了之后， 在data没有这个value，所以没办法传给父-->
     <van-popup
       :style="{height:'90%'}"
       position="bottom"

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- dialog要注册的是input事件？ -->
     <van-dialog
       :value="value"
       :showConfirmButton="false"
